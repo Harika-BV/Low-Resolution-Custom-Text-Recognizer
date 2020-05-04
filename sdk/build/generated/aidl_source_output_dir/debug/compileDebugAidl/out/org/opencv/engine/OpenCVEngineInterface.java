@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: D:\\HARIKA_BV\\Image Processing\\Android-OpenCV\\OpenCV_Android\\sdk\\java\\src\\org\\opencv\\engine\\OpenCVEngineInterface.aidl
+ * Original file: D:\\HARIKA_BV\\Image Processing\\Android-OpenCV\\OCR\\sdk\\java\\src\\org\\opencv\\engine\\OpenCVEngineInterface.aidl
  */
 package org.opencv.engine;
 /**

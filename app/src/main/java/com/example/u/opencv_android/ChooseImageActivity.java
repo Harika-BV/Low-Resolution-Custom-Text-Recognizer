@@ -1,28 +1,21 @@
 package com.example.u.opencv_android;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
+import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import java.io.IOException;
-
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
@@ -37,6 +30,9 @@ public class ChooseImageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_image);
+
+        System.setProperty("org.apache.poi.javax.xml.stream.XMLOutputFactory", "com.fasterxml.aalto.stax.OutputFactoryImpl");
+        System.setProperty("org.apache.poi.javax.xml.stream.XMLEventFactory", "com.fasterxml.aalto.stax.EventFactoryImpl");
 
         chooseImage = findViewById(R.id.chooseImage);
         next = findViewById(R.id.next);
@@ -82,12 +78,12 @@ public class ChooseImageActivity extends AppCompatActivity {
 
             CropImage.activity(imageUri)
                     .setGuidelines(CropImageView.Guidelines.ON)
-                    .setMultiTouchEnabled(true)
+                    .setMultiTouchEnabled(false)
                     //REQUEST COMPRESS SIZE
-                    .setRequestedSize(800, 800)
+                    .setInitialCropWindowRectangle(new Rect(0,0,585,645))
+                    .setRequestedSize(585, 645)
                     //ASPECT RATIO, DELETE IF YOU NEED CROP ANY SIZE
-                    .setAspectRatio(1, 1)
-                    .start(this);
+                   .start(this);
         }
 
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
